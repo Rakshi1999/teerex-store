@@ -88,7 +88,7 @@ export default function Home() {
 
       <div className="flex items-center justify-center p-5 gap-x-1">
         <input
-          className="p-2 border-b-2 border-gray-400 md:w-[400px] w-full"
+          className="search-button-container p-2 border-b-2 border-gray-400 md:w-[400px] w-full"
           placeholder="Search for products"
           value={searchValue}
           onChange={(e) => setSearchValue(e.target.value)}
