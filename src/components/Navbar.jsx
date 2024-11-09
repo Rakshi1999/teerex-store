@@ -1,24 +1,29 @@
 import React, { useEffect, useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FaCartShopping } from "react-icons/fa6";
 import { twMerge } from "tailwind-merge";
 import { useSelector } from "react-redux";
 
 export default function Navbar() {
   const [selectedRoute, setSelectedRoute] = useState("/");
-
   const location = useLocation();
   const { cart } = useSelector((state) => state.cartSlice);
+  const navigate = useNavigate();
 
   useEffect(() => {
     setSelectedRoute(location.pathname);
   }, [location.pathname]);
 
   return (
-    <nav className="bg-blue-700 py-4 px-8">
-      <div className="container mx-auto flex justify-between">
-        <div className="text-white font-bold text-xl">TeeRex Store</div>
-        <ul className="flex justify-center items-center gap-x-10 text-white">
+    <nav className="px-8 py-4 bg-blue-700">
+      <div className="container flex justify-between mx-auto">
+        <div
+          className="text-xl font-bold text-white hover:cursor-pointer hover:opacity-90"
+          onClick={() => navigate("/")}
+        >
+          TeeRex Store
+        </div>
+        <ul className="flex items-center justify-center text-white gap-x-10">
           <li>
             <Link
               to="/"
@@ -39,7 +44,7 @@ export default function Navbar() {
               )}
             >
               {cart.length > 0 && (
-                <div className="absolute -top-2 -left-3 bg-red-500 text-white rounded-full w-5 h-5 text-xs flex justify-center items-center">
+                <div className="absolute flex items-center justify-center w-5 h-5 text-xs text-white bg-red-500 rounded-full -top-2 -left-3">
                   {cart.length > 0 ? cart.length : ""}
                 </div>
               )}

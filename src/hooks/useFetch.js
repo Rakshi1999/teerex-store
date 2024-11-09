@@ -17,7 +17,6 @@ export default function useFetch(url) {
       } finally {
         setLoading(false);
       }
-      console.log(data);
     };
 
     if (url) {
